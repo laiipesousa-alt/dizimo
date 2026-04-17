@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Igreja - Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: sans-serif; background: #f4f6f8; }
+    nav { background: #1a237e; color: white; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+    nav .logo { font-size: 18px; font-weight: 500; }
+    nav ul { list-style: none; display: flex; gap: 20px; }
+    nav ul li a { color: white; text-decoration: none; font-size: 14px; }
+    nav ul li a:hover { text-decoration: underline; }
+    .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    h2 { color: #1a237e; margin-bottom: 24px; font-size: 22px; }
+    .cards { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+    .card { background: white; border-radius: 10px; padding: 24px; flex: 1; min-width: 180px; border-left: 4px solid; }
+    .card.verde { border-color: #2e7d32; }
+    .card.vermelho { border-color: #c62828; }
+    .card.azul { border-color: #1565c0; }
+    .card.roxo { border-color: #6a1b9a; }
+    .card h3 { font-size: 13px; color: #666; margin-bottom: 8px; }
+    .card p { font-size: 26px; font-weight: 500; color: #222; }
+    footer { text-align: center; padding: 20px; color: #999; font-size: 13px; margin-top: 40px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">⛪ Igreja</div>
+  <ul>
+    <li><a href="/">Dashboard</a></li>
+	<li><a href="/dizimos">Dízimos</a></li>
+	<li><a href="/gastos">Gastos</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h2>Dashboard</h2>
+  <div class="cards">
+    <div class="card verde">
+      <h3>Total de Dízimos</h3>
+      <p>R$ <span th:text="${#numbers.formatDecimal(totalDizimos, 1, 2)}">0,00</span></p>
+    </div>
+    <div class="card vermelho">
+      <h3>Total de Gastos</h3>
+      <p>R$ <span th:text="${#numbers.formatDecimal(totalGastos, 1, 2)}">0,00</span></p>
+    </div>
+    <div class="card azul">
+      <h3>Saldo Final</h3>
+      <p>R$ <span th:text="${#numbers.formatDecimal(saldo, 1, 2)}">0,00</span></p>
+    </div>
+    <div class="card roxo">
+      <h3>Quantidade de Dízimos</h3>
+      <p th:text="${quantidadeDizimos}">0</p>
+    </div>
+  </div>
+</div>
+
+<footer><a href= "/footer">Sistema de Gestão da Igreja © 2026</a></footer>
+
+</body>
+</html>
